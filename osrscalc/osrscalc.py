@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jul 31 20:52:59 2021
-
-@author: Adam
-"""
 import gear
 
 class Player:
@@ -97,7 +91,15 @@ def Calc(p1, p2, food=[0, 0]):
         tick += 1
     p1odds *= 100
     p1odds = str("{:.2f}".format(p1odds))
-    return "P1 has a "+p1odds+"% chance to win."
+    if p1odds < 50:
+        betx = (1-p1odds)/p1odds
+        betx = str("{:.6f}".format(betx))
+        outstr = 'Fair staking odds: p2'+betx+'x p1'
+    else:
+        betx = p1odds/(1-p1odds)
+        betx = str("{:.2f}".format(betx))
+        outstr = 'Fair staking odds: p1'+betx+'x p2'.
+    return "P1 has a "+p1odds+"% chance to win. "+outstr
         
 
 def inputStats():
