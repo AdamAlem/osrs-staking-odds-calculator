@@ -90,15 +90,16 @@ def Calc(p1, p2, food=[0, 0]):
         p1odds += (1-(hpvec1[-1]+tempdeath1)/2) * d2
         tick += 1
     p1odds *= 100
-    p1odds = str("{:.2f}".format(p1odds))
     if p1odds < 50:
-        betx = (1-p1odds)/p1odds
+        betx = (100-p1odds)/p1odds
         betx = str("{:.6f}".format(betx))
-        outstr = 'Fair staking odds: p2'+betx+'x p1'
+        outstr = 'Fair staking odds: p2 should '+betx+'x p1'
     else:
-        betx = p1odds/(1-p1odds)
+        betx = p1odds/(100-p1odds)
         betx = str("{:.2f}".format(betx))
-        outstr = 'Fair staking odds: p1'+betx+'x p2'.
+        outstr = 'Fair staking odds: p1 should '+betx+'x p2'
+    
+    p1odds = str("{:.2f}".format(p1odds))
     return "P1 has a "+p1odds+"% chance to win. "+outstr
         
 
